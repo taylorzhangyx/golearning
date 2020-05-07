@@ -21,13 +21,15 @@ func main() {
 	float32 float64
 
 	complex64 complex128
+
+	false for booleans, 0 for numeric types, "" for strings, and nil for pointers, functions, interfaces, slices, channels, and maps.
 	*/
-	var value = 123;
+	var value = 123; // default is 0
 
 	fmt.Println(value)
 	fmt.Printf("The type of value is: %T\n", value)
 
-	var vS = "test string";
+	var vS = "test string"; // default is empty string
 
 	fmt.Println(vS)
 	fmt.Printf("The type of value is: %T\n", vS)
@@ -37,7 +39,7 @@ func main() {
 	fmt.Println(vF)
 	fmt.Printf("The type of value is: %T\n", vF)
 
-	var vB = true
+	var vB = true // default is false
 
 	fmt.Println(vB)
 	fmt.Printf("The type of value is: %T\n", vB)
