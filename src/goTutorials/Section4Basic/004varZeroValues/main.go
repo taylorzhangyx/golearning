@@ -43,4 +43,9 @@ func main() {
 
 	fmt.Println(vB)
 	fmt.Printf("The type of value is: %T\n", vB)
+
+	s := fmt.Sprintf("a string should be printed out %s", "string")
+	fmt.Println(s)
+	fmt.Printf("%T", s)
+
 }
