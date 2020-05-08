@@ -37,4 +37,23 @@ func main() {
 	fmt.Println("bitshiftiota: ", bitshift3)
 	fmt.Println("bitshiftiota: ", bitshift4)
 	fmt.Println("bitshiftiota: ", bitshift5)
+
+	unsignedConst()
+}
+
+func unsignedConst() {
+	const (
+		cint        = 10 // untyped const
+		cflo        = 4.3
+		cstr        = "str"
+		ctint   int = 10 // typed const
+		cbigint     = 99999
+	)
+	type myInt int
+	var testInt myInt = cint // valid
+	fmt.Println(testInt)
+
+	//testInt = ctint // error - type does not match
+	//var smlint int8 = cbigint // error - the compiler warns a overflow
+	// since the compiler knows the value of the constant, it will evaluate the assignment
 }
