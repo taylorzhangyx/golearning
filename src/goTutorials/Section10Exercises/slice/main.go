@@ -16,11 +16,7 @@ func e3() {
 	slc = append(slc, 13)
 	slc = append(slc, 14)
 	slc = append(slc, 15)
-	slc = append(slc, 16)
-	slc = append(slc, 17)
-	slc = append(slc, 18)
-	slc = append(slc, 19)
-	slc = append(slc, 20)
+	slc = append(slc, 16, 17, 18, 19, 20)
 
 	for i, v := range slc {
 		fmt.Println(i, v)
@@ -44,4 +40,11 @@ func e4() {
 	}
 	fmt.Printf("%T", ary)
 
+}
+
+func e5() {
+	x := []int{42, 43, 44, 45, 46, 47, 48, 49, 50, 51}
+	fmt.Println(x)
+	y := append(x[:3], x[6:]...)
+	fmt.Println(y)
 }
