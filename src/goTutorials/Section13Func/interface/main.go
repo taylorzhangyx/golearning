@@ -73,7 +73,7 @@ func (s suit) putOn() {
 func person(c wear) {
 	fmt.Println("Wearing:", c)
 	a, ok1 := c.(cloths)
-	b, ok2 := c.(suit)
+	b, ok2 := c.(suit) // type assertion. ok is true if the dynamic type of c and the asserted type are identical
 	a.putOn()
 	fmt.Println("a:", a, ",ok:", ok1)
 	fmt.Println("b:", b, ",ok:", ok2)
