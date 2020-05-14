@@ -30,5 +30,6 @@ func makeaSlice() {
 	for i, v := range slc {
 		fmt.Println(i, v)
 	}
-
+	fmt.Println(slc[5:], slc[:7])
+	fmt.Println("length of the slice", len(slc), "capacity of the slice", cap(slc))
 }
