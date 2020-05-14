@@ -66,3 +66,17 @@ func e6() {
 		fmt.Println(ary[i])
 	}
 }
+func e7() {
+
+	twoDstr := make([][]string, 0)
+	data := []string{"James", "Bond", "Shaken, not stirred", "Miss", "Moneypenny", "Helloooooo, James"}
+	for i := 0; i < 2; i++ {
+		slc := []string{}
+		for j := 0; j < 3; j++ {
+			slc = append(slc, data[i*3+j])
+		}
+		twoDstr = append(twoDstr, slc)
+
+	}
+	fmt.Println(twoDstr)
+}
