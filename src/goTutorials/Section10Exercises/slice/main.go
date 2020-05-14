@@ -80,3 +80,30 @@ func e7() {
 	}
 	fmt.Println(twoDstr)
 }
+
+func e8() map[string][]string {
+	raw := [][]string{{`bond_james`, `Shaken, not stirred`, `Martinis`, `Women`},
+		{`moneypenny_miss`, `James Bond`, `Literature`, `Computer Science`},
+		{`no_dr`, `Being evil`, `Ice cream`, `Sunsets`}}
+
+	dict := make(map[string][]string)
+	for _, ary := range raw {
+		key := ""
+		for j, v := range ary {
+			if j == 0 {
+				key = v
+				dict[v] = make([]string, 0, 3)
+			} else {
+				dict[key] = append(dict[key], v)
+			}
+		}
+	}
+	fmt.Println(dict)
+	return dict
+}
+func e9(dict map[string][]string) {
+	dict["taylor"] = []string{"a", "b", "c"}
+	for k, v := range dict {
+		fmt.Println(k, v)
+	}
+}
