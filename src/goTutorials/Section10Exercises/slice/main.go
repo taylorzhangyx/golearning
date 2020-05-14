@@ -48,3 +48,21 @@ func e5() {
 	y := append(x[:3], x[6:]...)
 	fmt.Println(y)
 }
+
+func e6() {
+	ary := make([]string, 0, 50)
+	fmt.Println("length", len(ary), "capacity", cap(ary))
+
+	states := []string{`Alabama`, ` Alaska`, ` Arizona`, ` Arkansas`, ` California`, ` Colorado`, ` Connecticut`, ` Delaware`, ` Florida`, ` Georgia`, ` Hawaii`, ` Idaho`, ` Illinois`, ` Indiana`, ` Iowa`, ` Kansas`, ` Kentucky`, ` Louisiana`, ` Maine`, ` Maryland`, ` Massachusetts`, ` Michigan`, ` Minnesota`, ` Mississippi`, ` Missouri`, ` Montana`, ` Nebraska`, ` Nevada`, ` New Hampshire`, ` New Jersey`, ` New Mexico`, ` New York`, ` North Carolina`, ` North Dakota`, ` Ohio`, ` Oklahoma`, ` Oregon`, ` Pennsylvania`, ` Rhode Island`, ` South Carolina`, ` South Dakota`, ` Tennessee`, ` Texas`}
+	ary = append(ary, states...)
+	fmt.Println("the full array:", ary)
+	fmt.Println("length", len(ary), "capacity", cap(ary))
+
+	for i, v := range ary {
+		fmt.Println(i, v)
+	}
+
+	for i := 0; i < len(ary); i++ {
+		fmt.Println(ary[i])
+	}
+}
