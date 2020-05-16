@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 )
 
@@ -30,4 +31,9 @@ func main() {
 	fmt.Println(users)
 
 	// your code goes here
+	b, err := json.Marshal(users)
+	if err != nil {
+		fmt.Println(err)
+	}
+	fmt.Println("json:", string(b))
 }
