@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"runtime"
 	"sync"
+	"sync/atomic"
 )
 
 func main() {
@@ -95,6 +96,34 @@ func mutex() {
 			go exe(i)
 			count = counter + 1
 			m.Unlock()
+		}(i)
+	}
+	wg.Wait()
+	fmt.Printf("DONE, %v", count)
+}
+
+func atomicc() {
+	var wg sync.WaitGroup
+	exe := func(n int) {
+		notuse := 0
+		for i := 0; i < 9999; i++ {
+			notuse += i
+		}
+		fmt.Println("Done", n)
+		wg.Done()
+	}
+
+	var count int64 = 0
+	wg.Add(100)
+	for i := 0; i < 100; i++ {
+		go func(i int) {
+			atomic.AddInt64(&count, 1)
+			go exe(i)
+
+			r := atomic.LoadInt64(&count)
+			fmt.Println(r)
+			wg.Done()
+			runtime.Gosched()
 		}(i)
 	}
 	wg.Wait()
