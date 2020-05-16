@@ -47,3 +47,17 @@ func readChannel(c <-chan int, wg *sync.WaitGroup) {
 func sendChannel(c chan<- int) {
 	c <- rand.Int()
 }
+
+func rangeChannel() {
+	// range will check the channel untill it's closed
+	c := make(chan int)
+	go func() {
+		for i := 0; i < 10; i++ {
+			c <- rand.Intn(99)
+		}
+		close(c)
+	}()
+	for v := range c { // it'll pull all the remaining values in the channel after the channel is closed
+		fmt.Println(v)
+	}
+}
