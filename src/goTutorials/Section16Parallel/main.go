@@ -45,3 +45,29 @@ func gosched() {
 		}() // this executed on the main thread and controlled by main
 	}
 }
+
+func racecondition() {
+	var wg sync.WaitGroup
+	exe := func(n int) {
+		notuse := 0
+		for i := 0; i < 9999; i++ {
+			notuse += i
+		}
+		fmt.Println("Done", n)
+		wg.Done()
+	}
+
+	count := 0
+	wg.Add(100)
+	for i := 0; i < 100; i++ {
+		go func(i int) {
+			counter := count
+
+			runtime.Gosched()
+			go exe(i)
+			count = counter + 1
+		}(i)
+	}
+	wg.Wait()
+	fmt.Printf("DONE, %v", count)
+}
