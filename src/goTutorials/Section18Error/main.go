@@ -1,3 +1,4 @@
+// Something to document
 package main
 
 import (
@@ -9,7 +10,6 @@ import (
 // }
 
 // https://blog.golang.org/defer-panic-and-recover
-
 func main() {
 	f()
 	fmt.Println("Returned normally from f.")
@@ -22,16 +22,17 @@ func f() {
 		}
 	}()
 	fmt.Println("Calling g.")
-	g(0)
+	G(0)
 	fmt.Println("Returned normally from g.") // This line will not be executed since the panic popped up the function
 }
 
-func g(i int) {
+// G Document for G.
+func G(i int) {
 	if i > 3 {
 		fmt.Println("Panicking!")
 		panic(fmt.Sprintf("%v", i))
 	}
 	defer fmt.Println("Defer in g", i)
 	fmt.Println("Printing in g", i)
-	g(i + 1)
+	G(i + 1)
 }
