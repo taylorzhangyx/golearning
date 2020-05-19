@@ -16,3 +16,4 @@ func WriteDown() {
 	fmt.Println("Write down the documentation")
 }
 
+// godoc - run the local doc server on localhost:6060
