@@ -17,3 +17,4 @@ func WriteDown() {
 }
 
 // godoc - run the local doc server on localhost:6060
+// https://blog.golang.org/godoc
