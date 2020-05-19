@@ -36,3 +36,9 @@ func ExampleMagic_second() {
 	// Output:
 	// false
 }
+
+func BenchmarkMagic(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		Magic(111, 1111, 1111, 111231, 123, 123, 123, 1231, 24, 455, 41, 231, 45, 123, 123, 1234)
+	}
+}
