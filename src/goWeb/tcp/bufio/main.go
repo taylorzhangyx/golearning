@@ -2,9 +2,11 @@ package main
 
 import (
 	"bufio"
+	"fmt"
 	"io"
 	"log"
 	"net"
+	"time"
 )
 
 func main() {
@@ -25,11 +27,14 @@ func main() {
 }
 
 func scan(connection net.Conn) {
+	// After the duration, the connection will terminate.
+	connection.SetDeadline(time.Now().Add(time.Second * 10))
 	scner := bufio.NewScanner(connection)
 	for scner.Scan() {
 		line := scner.Text()
 		log.Println(line)
+		io.WriteString(connection, fmt.Sprintln("Yo!", line))
 	}
-	io.WriteString(connection, "DONE!")
-	defer connection.Close()
+	defer log.Println("TIME OUT!")
+	connection.Close()
 }
