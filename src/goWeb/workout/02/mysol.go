@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
 	"io"
 	"log"
@@ -21,15 +22,23 @@ func main() {
 		if err != nil {
 			panic(fmt.Sprintln("Accept Failed", err))
 		}
+		scanner := bufio.NewScanner(con)
 		go func(con net.Conn) {
-			_, err := io.WriteString(con, "I see you connected")
-			if err != nil {
-				panic(fmt.Sprintln("Write Failed", err))
+			for scanner.Scan() {
+				str := scanner.Text()
+				_, err := io.WriteString(con, fmt.Sprintln("I see you connected:", str))
+				if err != nil {
+					panic(fmt.Sprintln("Write Failed", err))
+				}
+				log.Println(str)
+				if str == "" {
+					break
+				}
 			}
 			count++
 			defer con.Close()
 		}(con)
-		if count >= 1 {
+		if count >= 5 {
 			lis.Close()
 			break
 		}
